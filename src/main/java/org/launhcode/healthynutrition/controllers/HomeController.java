@@ -10,6 +10,6 @@ public class HomeController {
     @GetMapping
     @ResponseBody
     public String index(){
-        return  "Welcome to Healthy Nutrition website";
+        return  "Welcome to Healthy Nutrition website!!!!";
     }
 }
