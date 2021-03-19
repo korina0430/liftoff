@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<h1>Welcome to recipe creation!</h1>
+<form method="post">
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label th:for="name">Title</label>
+            <input type="text" class="form-control"  th:field="${recipe.name}">
+            <p th:errors="${recipe.name}" class="error"></p>
+        </div>
+        <div class="col-sm-6">
+            <label th:for="description">Description</label>
+            <input type="text" class="form-control" th:field="${recipe.description}">
+            <p th:errors="${recipe.description}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label th:for="calories">Calories</label>
+            <input type="text" class="form-control"  th:field="${recipe.calories}">
+            <p th:errors="${recipe.calories}" class="error"></p>
+        </div>
+        <div class="col-sm-6">
+            <label th:for="servingUnits">Serving units</label>
+            <input type="text" class="form-control" th:field="${recipe.servingUnits}">
+            <p th:errors="${recipe.servingUnits}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <label th:for="categories" >Category </label>
+            <th:block th:each="category : ${categories}">
+                <input type="checkbox" name="categories" th:value="${category.id}">
+                <label th:text="${category.name}"></label>
+            </th:block>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <label th:for="directions">Directions</label>
+            <textarea rows="6" cols="8" class="form-control" th:field="${recipe.directions}"></textarea>
+            <p th:errors="${recipe.directions}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="col-sm-12">
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>
