@@ -1,26 +1,33 @@
 package org.launhcode.healthynutrition.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
-public class Register {
+public class User {
 
+    @NotNull
     private String user_fname;
     private String user_lname;
     @Id
+    @Email
     private String user_email;
+    @NotNull
     private String user_pass;
-
+    private String user_repass;
 //    private int id;
 
 
-    public Register(){}
+    public User(){}
 
-    public Register(String user_fname, String user_lname, String user_email, String user_pass, int id) {
+    public User(String user_fname, String user_lname, String user_email, String user_pass, int id) {
         this.user_fname = user_fname;
         this.user_lname = user_lname;
         this.user_email = user_email;
         this.user_pass = user_pass;
+        this.user_repass = user_repass;
 //        this.id = id;
     }
 
@@ -58,7 +65,25 @@ public class Register {
         this.user_pass = user_pass;
     }
 
-//    @Override
+    public String getUser_repass() {return user_repass;}
+    public void setUser_repass(String user_repass) {this.user_repass = user_repass;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(getUser_pass(), user.getUser_pass()) &&
+                Objects.equals(getUser_repass(), user.getUser_repass());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUser_pass(), getUser_repass());
+    }
+
+
+    //    @Override
 //    public String toString() {
 //        return "User [id=" + ", user_fname=" + user_fname + ", user_lname=" + user_lname + ", user_email="
 //                + user_email + ", user_pass=" + user_pass + "]";

@@ -104,7 +104,8 @@ hr {
 </style>
 </head>
 <body>
-<form action="addUser" style="border:1px solid #ccc" method="post">
+<!--<form action="addUser" style="border:1px solid #ccc" method="post">-->
+<form method="post" action="signup" modelAttribute = "user">
     <div class="container">
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
@@ -122,6 +123,8 @@ hr {
         <label Password></label>
         <input type="password" placeholder="Enter Password" name="user_pass" required>
 
+<!--        <label Repeat Password></label>-->
+<!--        <input type="password" placeholder="Repeat Password" name="" required>-->
 
         <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
