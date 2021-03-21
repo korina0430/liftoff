@@ -14,9 +14,11 @@ public class RecipeCategory {
     @Id
     @GeneratedValue
     private int id;
+
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be in 3 to 50 characters")
     private String name;
+
     @NotBlank(message = "Description is required")
     @Size(min = 5, max = 50, message = "Description must be in 5 to 50 characters")
     private String description;
