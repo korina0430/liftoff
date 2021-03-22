@@ -19,6 +19,7 @@ import java.util.List;
 public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
+
     @Autowired
     private RecipeCategoryRepository recipeCategoryRepository;
 
@@ -29,6 +30,7 @@ public class RecipeController {
         model.addAttribute(new Recipe());
         return "recipe/create";
     }
+
     @PostMapping("create")
     public String processCreateRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
                                     Errors errors, Model model,
@@ -36,7 +38,7 @@ public class RecipeController {
         if (errors.hasErrors() || categories.isEmpty() ) {
             model.addAttribute("title", "Create Recipe");
             model.addAttribute("categories", recipeCategoryRepository.findAll());
-            model.addAttribute(new Recipe());
+            model.addAttribute(newRecipe);
             return "recipe/create";
         }
 
