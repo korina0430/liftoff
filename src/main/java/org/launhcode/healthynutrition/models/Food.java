@@ -1,10 +1,7 @@
 package org.launhcode.healthynutrition.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 
 /**
  * Represents a row in the food table in the database.
@@ -12,11 +9,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Food extends AbstractEntity {
 
-        private String breakfast;
-        private String lunch;
-        private String dinner;
-        private String snacks;
-        private String exercise;
+    private String breakfast;
+    private String lunch;
+    private String dinner;
+    private String snacks;
+    private String exercise;
 
     public Food() {
 
