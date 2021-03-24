@@ -35,7 +35,7 @@ public class MealController {
         foodRepository.save(food);
         return "redirect:";
     }
-// TODO: make if-elf or switch-case statements for calculations
+// TODO: make if-else or switch-case statements for calculations
 // TODO: add attributes from food model
 // TODO: make a method that stores user input and calculate what they've entered.
 }
