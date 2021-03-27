@@ -4,15 +4,18 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/styles.css}">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body class="container">
-<h1>Create Recipe</h1>
-<form method="post">
+<h1 th:text="${title}"></h1>
+<form method="post" th:action="create">
     <div class="form-group row">
         <div class="col-sm-6">
             <label th:for="name">Title</label>
             <input type="text" class="form-control"  th:field="${recipe.name}">
+            <input type="hidden" th:field="${recipe.id}">
             <p th:errors="${recipe.name}" class="error"></p>
         </div>
         <div class="col-sm-6">
@@ -40,6 +43,7 @@
                 <input type="checkbox" name="categories" th:value="${category.id}">
                 <label th:text="${category.name}"></label>
             </th:block>
+            <p th:text="${categoryError}" class="error"></p>
         </div>
     </div>
     <div class="form-group row">
