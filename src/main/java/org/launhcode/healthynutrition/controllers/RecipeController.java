@@ -56,7 +56,7 @@ public class RecipeController {
         List<RecipeCategory> recipeCategories =(List<RecipeCategory>) recipeCategoryRepository.findAllById(categories);
         recipe.setCategories(recipeCategories);
         recipeRepository.save(recipe);
-        return "redirect:/";
+        return "redirect:/recipe/posts";
     }
     @GetMapping("edit")
     public String getRecipeForm(Model model, @RequestParam int id){
@@ -76,7 +76,14 @@ public class RecipeController {
         if (existingRecipe.isPresent()){
             recipeRepository.delete(existingRecipe.get());
         }
-        return "redirect:/";
+        return "redirect:/recipe/posts";
+    }
+
+    @GetMapping("posts")
+    public String displayRecipePosts(Model model){
+        model.addAttribute("title", "Recipes");
+        model.addAttribute("recipes", recipeRepository.findAll());
+        return "recipe/posts";
     }
 
 }
