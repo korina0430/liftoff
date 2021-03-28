@@ -63,8 +63,20 @@ public class RecipeController {
         model.addAttribute("title", "Edit Recipe");
         model.addAttribute("categories", recipeCategoryRepository.findAll());
         Optional<Recipe> existingRecipe =   recipeRepository.findById(id);
-        model.addAttribute(existingRecipe.get());
-    return "recipe/create";
+        if(existingRecipe.isPresent()) {
+            model.addAttribute(existingRecipe.get());
+            return "recipe/create";
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("delete/{id}")
+    public String deleteRecipe(@PathVariable int id){
+        Optional<Recipe> existingRecipe =   recipeRepository.findById(id);
+        if (existingRecipe.isPresent()){
+            recipeRepository.delete(existingRecipe.get());
+        }
+        return "redirect:/";
     }
 
 }
