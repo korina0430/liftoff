@@ -13,7 +13,7 @@
       </tr>
       <tr th:each="recipe : ${recipes}">
           <td>
-              <a th:href="'/recipe/edit?id=' + ${recipe.id}">View</a>
+              <a th:href="'/recipe/' + ${recipe.id}">View</a>
               |<a th:href="'/recipe/edit?id=' + ${recipe.id}">Edit</a>
               |<a th:href="'/recipe/delete/'+${recipe.id}">Delete</a>
           </td>

@@ -45,14 +45,11 @@ public class RecipeController {
             }
             if (categories == null){
                 model.addAttribute("categoryError", "Category is required");
-
             }
-
             model.addAttribute("categories", recipeCategoryRepository.findAll());
             model.addAttribute(recipe);
             return "recipe/create";
         }
-
         List<RecipeCategory> recipeCategories =(List<RecipeCategory>) recipeCategoryRepository.findAllById(categories);
         recipe.setCategories(recipeCategories);
         recipeRepository.save(recipe);
@@ -86,4 +83,14 @@ public class RecipeController {
         return "recipe/posts";
     }
 
+    @GetMapping("/{id}")
+    public String viewRecipe(@PathVariable int id, Model model){
+        model.addAttribute("title", "View Recipe");
+        Optional<Recipe> existingRecipe = recipeRepository.findById(id);
+        if(!existingRecipe.isPresent()){
+            return "redirect:/recipe/create";
+        }
+        model.addAttribute("recipe", existingRecipe.get());
+        return "recipe/view";
+    }
 }
