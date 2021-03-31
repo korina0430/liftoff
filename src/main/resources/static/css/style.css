@@ -1,0 +1,146 @@
+body {
+    padding: 30px;
+    margin: 0;
+}
+
+h2 {
+    margin: 2px 0 3px;
+        width: 20%;
+        position: fixed;
+        padding: 8px 0 8px;
+        top: 100px;
+        left: 920px;
+        text-align: center;
+        font-family: calibri;
+        background-color: #88e6e9;
+        border-style: outset;
+        border-color: #000;
+}
+
+h1 {
+    margin: auto;
+        width: 50%;
+        padding: 8px;
+        text-align: center;
+        font-family: calibri;
+        background-color: #f0f8c6;
+        border-radius: 25px;
+        border: 2px solid #000;
+}
+div.field {
+    position: relative;
+}
+
+label {
+    font-size: 20px;
+    position: absolute;
+    top: -18px;
+    left: 3px;
+    font-family: calibri;
+}
+
+input {
+    width: 30%;
+    height: 30%;
+    position: relative;
+    top: 50%;
+    margin: 12px 0 20px;
+    border-style: solid;
+    border-color: #000;
+    font-family: calibri;
+}
+
+input[type=number] {
+    width: 3%;
+    left:815px;
+    position: relative;
+    border-radius:3px;
+    border: 1px solid #000;
+    text-align: center;
+}
+.bfInput {
+    top: -320px;
+    position: relative;
+}
+.lunchInput {
+    top: -315px;
+    position: relative;
+}
+.dinnerInput {
+    top: -315px;
+    position: relative;
+}
+.snackInput {
+    top: -310px;
+    position: relative;
+}
+.exerciseInput {
+    top: -310px;
+    position: relative;
+}
+
+input[type=submit] {
+    bottom: 300px;
+}
+
+.breakfast {
+    color: #35d4da;
+    top: 90px;
+}
+
+.lunch {
+    color: #414bb2;
+    top: 90px;
+}
+
+.dinner {
+    color: #8fd14f;
+    top: 90px;
+}
+
+.snacks {
+    color: #fac710;
+    top: 90px;
+}
+
+.exercise {
+    color: #0ca789;
+    top: 90px;
+}
+
+.kCalories {
+    color: #36d4da;
+    position: relative;
+    left: 800px;
+    top: -320px;
+    font-family: calibri;
+}
+
+.fieldset1 {
+    left: 400px;
+    bottom: -100px;
+    position: relative;
+        width: 8%;
+        text-align: center;
+        border-style: solid;
+        border-color: #000;
+}
+
+.fieldset2 {
+    left: 80px;
+    bottom: -150px;
+    position: relative;
+        width: 8%;
+        text-align: center;
+        border-style: solid;
+        border-color: #000;
+}
+
+.kcalFields {
+    color: #35d4da;
+    font-family calibri;
+    font-size 18px;
+    bottom: -150px;
+    position: relative;
+    left: 80px;
+}

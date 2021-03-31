@@ -1,6 +1,8 @@
 package org.launhcode.healthynutrition.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -8,6 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 public class Food extends AbstractEntity {
+
+    @ManyToMany
+    private List<Meal> meal = new ArrayList<>();
 
     private String breakfast;
     private String lunch;
@@ -66,4 +71,5 @@ public class Food extends AbstractEntity {
     public void setExercise(String exercise) {
         this.exercise = exercise;
     }
+
 }
