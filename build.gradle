@@ -26,12 +26,12 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.security:spring-security-crypto'
 	compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	implementation 'org.springframework.security:spring-security-crypto'
-}
+	}
 
 test {
 	useJUnitPlatform()
