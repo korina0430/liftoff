@@ -1,2 +1,0 @@
-org/launhcode/healthynutrition/HealthyNutritionApplicationTests.java
- org.launhcode.healthynutrition.HealthyNutritionApplicationTests
