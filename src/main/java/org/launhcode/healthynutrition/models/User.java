@@ -1,94 +1,86 @@
 package org.launhcode.healthynutrition.models;
-
-import javax.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 public class User {
-
-    @NotNull
-    private String user_fname;
-    private String user_lname;
     @Id
-    @Email
-    private String user_email;
-    @NotNull
-    private String user_pass;
-    private String user_repass;
-//    private int id;
+    @GeneratedValue
+    private Integer Id;
 
+    @NotNull
+    private String firstName;
+    private String lastName;
+    @NotNull
+    @Email
+    private String email;
+    @NotNull
+    private String pwHash;
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User(){}
 
-    public User(String user_fname, String user_lname, String user_email, String user_pass, int id) {
-        this.user_fname = user_fname;
-        this.user_lname = user_lname;
-        this.user_email = user_email;
-        this.user_pass = user_pass;
-        this.user_repass = user_repass;
-//        this.id = id;
+    public User(String firstName, String lastName, String email, String password){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.pwHash = encoder.encode(password);
     }
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
-
-    public String getUser_fname() {
-        return user_fname;
-    }
-    public void setUser_fname(String user_fname) {
-        this.user_fname = user_fname;
-    }
-    public String getUser_lname() {
-        return user_lname;
-    }
-    public void setUser_lname(String user_lname) {
-        this.user_lname = user_lname;
-    }
-    public String getUser_email() {
-        return user_email;
-    }
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
-    }
-    public String getUser_pass() {
-        return user_pass;
-    }
-    public void setUser_pass(String user_pass) {
-        this.user_pass = user_pass;
+    public Integer getId() {
+        return Id;
     }
 
-    public String getUser_repass() {return user_repass;}
-    public void setUser_repass(String user_repass) {this.user_repass = user_repass;}
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setUsername(String email) {
+        this.email = email;
+    }
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(getUser_pass(), user.getUser_pass()) &&
-                Objects.equals(getUser_repass(), user.getUser_repass());
+        return Objects.equals(Id, user.Id) &&
+                Objects.equals(getFirstName(), user.getFirstName()) &&
+                Objects.equals(getLastName(), user.getLastName()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(pwHash, user.pwHash);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUser_pass(), getUser_repass());
+        return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
     }
-
-
-    //    @Override
-//    public String toString() {
-//        return "User [id=" + ", user_fname=" + user_fname + ", user_lname=" + user_lname + ", user_email="
-//                + user_email + ", user_pass=" + user_pass + "]";
-//    }
-
 
 }
 
