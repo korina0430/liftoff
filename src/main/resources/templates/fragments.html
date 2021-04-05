@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-<<<<<<< HEAD
     <title>Health & Nutrition</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -11,7 +10,6 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
 
 </head>
-<body>
 
 <header th:fragment="header">
     <h1 th:text="${title}">Health & Nutrition</h1>
@@ -21,7 +19,6 @@
 
 </header>
 
-=======
     <title th:text="'Healthy Nutrition' + ${title == null ? '' : ' :: ' + title}">Healthy Nutrition</title>
     <title>Healthy Nutrition</title>
     <link rel="stylesheet" th:href="@{/styles.css}">
@@ -43,6 +40,5 @@
         </div>
     </div>
 </nav>
->>>>>>> main
 </body>
 </html>

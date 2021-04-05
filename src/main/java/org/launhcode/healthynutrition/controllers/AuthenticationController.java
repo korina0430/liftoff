@@ -20,10 +20,10 @@ public class AuthenticationController {
     @Autowired
     UserRepository userRepo;
 
-    private static final String userSessionKey = "user";
+    private static final String USER_SESSION_KEY = "user";
 
     public User getUserFromSession(HttpSession session) {
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        Integer userId = (Integer) session.getAttribute(USER_SESSION_KEY);
         if (userId == null) {
             return null;
         }
@@ -39,8 +39,7 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
 
-        session.setAttribute(userSessionKey, user.getEmail());
-//       session.setAttribute(userSessionKey, user.getId());
+        session.setAttribute(USER_SESSION_KEY, user.getEmail());
     }
 
     @GetMapping("/register")
