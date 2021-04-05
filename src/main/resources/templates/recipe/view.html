@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+<h3>View Recipe</h3>
+<div class="card">
+    <div class="card-header" th:text="${recipe.name}">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title" th:text="${recipe.description}"></h5>
+        <span class="card-text font-weight-bold">Calories:</span>
+        <p class="card-text" th:text="${recipe.calories}"></p>
+        <span class="card-text font-weight-bold">Serving Units:</span>
+        <p class="card-text" th:text="${recipe.servingUnits}"></p>
+        <span class="card-text font-weight-bold">Category:</span>
+        <p class="card-text  th:text=${category.name}" ></p>
+        <span class="card-text font-weight-bold">Recipe procedure:</span>
+        <p class="card-text" th:text="${recipe.directions}"></p>
+        <a th:href="'/recipe/posts'" class="btn btn-primary">Posts</a>
+    </div>
+</div>
+</body>
+</html>

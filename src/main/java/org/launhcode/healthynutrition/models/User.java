@@ -15,6 +15,7 @@ public class User {
 
     @NotNull
     private String firstName;
+
     private String lastName;
     @NotNull
     @Email

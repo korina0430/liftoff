@@ -21,6 +21,8 @@
 
     <title th:text="'Healthy Nutrition' + ${title == null ? '' : ' :: ' + title}">Healthy Nutrition</title>
     <title>Healthy Nutrition</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/styles.css}">
     <script th:src="@{/script.js}"></script>
 </head>
@@ -30,7 +32,7 @@
         <h2 class="logo">Healthy Nutrition</h2>
         <div class="header-left">
             <a class="active" href="/home">Home</a>
-            <a href="/createpost">Create Post</a>
+            <a href="/recipe/create">Create Post</a>
             <a href="/register">Login/Sign Up</a>
             <a href="/calorietracking">Calorie Tracking</a>
             <a href="/profile">My Profile</a>
