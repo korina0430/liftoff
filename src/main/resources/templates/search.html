@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container body-content">
+
+    <h3 th:text="${#strings.capitalizeWords(title)}"></h3>
+
+    <form th:action="@{/search/results}" method = "post">
+        <h2>Search Recipe:</h2>
+
+        <p>
+            <span th:each="column : ${columns}">
+                <input
+                        type="radio"
+                        name="searchType"
+                        th:id="${column.key}"
+                        th:value="${column.key}"
+                        th:checked="${column.key == 'all'}"/>
+                <label th:for="${column.key}" th:text="${column.value}"></label>
+            </span>
+
+        </p>
+
+        <p>
+            <label for="searchTerm">Recipe Name:</label>
+            <input type="text" name="searchTerm" id="searchTerm" />
+        </p>
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <hr/>
+
+    <table class="results">
+        <tr th:each="recipe : ${recipes}">
+            <td>
+                <h2>
+                    Recipe:
+                </h2>
+                <p th:text="${'Name: ' + recipe.name}"></p>
+                <p th:text="${'Description: ' + recipe.description}"></p>
+                <p th:each="category : ${recipe.categories}" th:text="${'Category:' + category.name}"></p>
+                <p th:text="${'Serving Units: ' + recipe.servingUnits}"></p>
+                <p th:text="${'Calories: ' + recipe.calories}"></p>
+                <p th:text="${'Recipe Procedure: ' + recipe.directions}"></p>
+
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+</head>
+</body>
+</html>
