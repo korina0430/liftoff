@@ -6,7 +6,7 @@ plugins {
 
 group = 'org.launchcode'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '13'
+sourceCompatibility = '11'
 
 configurations {
 	developmentOnly
@@ -25,13 +25,15 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'javax.persistence:javax.persistence-api:2.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.security:spring-security-crypto'
+	compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-}
+	}
 
 test {
 	useJUnitPlatform()

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+<h3 th:text="${title}"></h3>
+<form method="post" th:action="create">
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label th:for="name">Title</label>
+            <input type="text" class="form-control"  th:field="${recipe.name}">
+            <input type="hidden" th:field="${recipe.id}">
+            <p th:errors="${recipe.name}" class="error"></p>
+        </div>
+        <div class="col-sm-6">
+            <label th:for="description">Description</label>
+            <input type="text" class="form-control" th:field="${recipe.description}">
+            <p th:errors="${recipe.description}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label th:for="calories">Calories</label>
+            <input type="text" class="form-control"  th:field="${recipe.calories}">
+            <p th:errors="${recipe.calories}" class="error"></p>
+        </div>
+        <div class="col-sm-6">
+            <label th:for="servingUnits">Serving units</label>
+            <input type="text" class="form-control" th:field="${recipe.servingUnits}">
+            <p th:errors="${recipe.servingUnits}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <label th:for="categories" >Category </label>
+            <th:block th:each="category : ${categories}">
+                <input type="checkbox" name="categories"
+                       th:value="${category.id}" >
+                <label th:text="${category.name}"></label>
+            </th:block>
+            <a th:href="'/recipeCategory/add'">Add Category</a>
+            <p th:text="${categoryError}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <label th:for="directions">Directions</label>
+            <textarea rows="6" cols="8" class="form-control" th:field="${recipe.directions}"></textarea>
+            <p th:errors="${recipe.directions}" class="error"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="col-sm-12">
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>
