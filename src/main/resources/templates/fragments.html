@@ -14,7 +14,7 @@
 <header th:fragment="header">
     <h1 th:text="${title}">Health & Nutrition</h1>
     <ul class="nav" style="float:right;">
-        <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+        <li class="nav-item"><a class="nav-link" ></a></li>
     </ul>
 
 </header>
@@ -33,12 +33,12 @@
         <div class="header-left">
             <a class="active" href="/home">Home</a>
             <a href="/recipe/create">Create Post</a>
-            <a href="/register">Login/Sign Up</a>
+            <a href="/register">Login/SignUp</a>
             <a href="/calorietracking">Calorie Tracking</a>
             <a href="/profile">My Profile</a>
         </div>
         <div class="header-right">
-            <a class="active" >LogOut</a>
+            <a href="/login" >LogOut</a>
         </div>
     </div>
 </nav>

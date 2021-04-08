@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
+<h3 align="center">SignUp/Register</h3>
 <body class="container">
-<form method="post" >
-    <div class="form-group">
-        <label>First Name *
-            <input class="form-control" th:field="${registerFormDTO.firstName}" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.firstName}"></p>
+<div class="signup-form">
+    <form method="post">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6"><input type="text" class="form-control" th:field="${registerFormDTO.firstName}"placeholder="First Name" required="required"/></div>
+                <p class="error" th:errors="${registerFormDTO.firstName}"></p>
+                <div class="col-xs-6"><input type="text" class="form-control" th:field="${registerFormDTO.lastName}" placeholder="Last Name" required="required"/></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="${registerFormDTO.email}" placeholder="Email" required="required"/>
+            <p class="error" th:errors="${registerFormDTO.email}"></p>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" placeholder="Password" required="required" />
+            <p class="error" th:errors="${registerFormDTO.password}"></p>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="Confirm Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block" value="Signup">Register Now</button>
+        </div>
+    </form>
+    <div class="text-center">Already have an account? <a href="/login">Sign in</a>
     </div>
-    <div class="form-group">
-        <label>Last Name
-            <input class="form-control" th:field="${registerFormDTO.lastName}" />
-        </label>
-        <!--        <p class="error" th:errors="${registerFormDTO.firstName}"></p>-->
-    </div>
-    <div class="form-group">
-        <label>Username/EmailId *
-            <input class="form-control" th:field="${registerFormDTO.email}" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.email}"></p>
-    </div>
-    <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
-        </label>
-        <p class="error" th:errors="${registerFormDTO.password}"></p>
-    </div>
-    <div class="form-group">
-        <label>Verify Password
-            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
-        </label>
-    </div>
-
-    <input type="submit" class="btn btn-primary" value="Register" />
-</form>
-
+</div>
 </body>
 </html>
-
