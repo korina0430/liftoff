@@ -1,48 +1,18 @@
 
 package org.launhcode.healthynutrition.models;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Profile  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String gender;
-    private int age;
-    private int contactNumber;
-
-//    @OneToOne
-//    @JoinColumn(name = "Id")
-//    private User user;
-
-    public Profile() {}
-
-    public Profile(Integer id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    public Profile(Integer Id,String firstName, String lastName, String email, String password, String gender, int age, int contactNumber) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.age = age;
-        this.contactNumber = contactNumber;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -50,36 +20,34 @@ public class Profile  {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Id
+    private int id;
+    private String gender;
+    private int age;
+    private int contactNumber;
+
+
+    public Profile() {}
+
+
+    public User getUser() {
+        return user;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+    @OneToOne
+    @JoinColumn(name="id")
+    @Cascade(CascadeType.ALL)
+    private User user;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Profile(String gender, int age, int contactNumber) {
+        this.gender = gender;
+        this.age = age;
+        this.contactNumber = contactNumber;
     }
 
     public String getGender() {
@@ -105,4 +73,6 @@ public class Profile  {
     public void setContactNumber(int contactNumber) {
         this.contactNumber = contactNumber;
     }
+
+
 }
