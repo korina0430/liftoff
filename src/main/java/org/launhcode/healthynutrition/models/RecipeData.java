@@ -8,7 +8,7 @@ public class RecipeData {
 
         ArrayList<Recipe> results = new ArrayList<>();
 
-        if (value.toLowerCase().equals("all")){
+        if (value.equalsIgnoreCase("all")){
             return (ArrayList<Recipe>) allRecipes;
         }
 
@@ -18,27 +18,31 @@ public class RecipeData {
         }
         for (Recipe recipe : allRecipes) {
 
-            String aValue = getFieldValue(recipe, column);
+            String searchString = getFieldValue(recipe, column);
 
-            if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+            if (searchString != null && searchString.toLowerCase().contains(value.toLowerCase())) {
                 results.add(recipe);
             }
         }
+
 
         return results;
     }
 
     public static String getFieldValue(Recipe recipe, String fieldName){
-        String theValue;
-        if (fieldName.equals("name")){
-            theValue = recipe.getName();
-        } else if (fieldName.equals("description")){
-            theValue = recipe.getDescription().toString();
-        } else {
-            theValue = recipe.getServingUnits().toString();
+        String searchValue;
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                searchValue = recipe.getName();
+                break;
+            case "description":
+                searchValue = recipe.getDescription();
+                break;
+            default:
+                searchValue = recipe.getServingUnits();
         }
+        return searchValue;
 
-        return theValue;
     }
 
     /**
@@ -49,19 +53,19 @@ public class RecipeData {
      * @return      List of all recipes with at least one field containing the value.
      */
     public static ArrayList<Recipe> findByValue(String value, Iterable<Recipe> allRecipes) {
-        String lower_val = value.toLowerCase();
+        String searchWord = value.toLowerCase();
 
         ArrayList<Recipe> results = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
 
-            if (recipe.getName().toLowerCase().contains(lower_val)) {
+            if (recipe.getName().toLowerCase().contains(searchWord)) {
                 results.add(recipe);
-            } else if (recipe.getDescription().toString().toLowerCase().contains(lower_val)) {
+            } else if (recipe.getDescription().toLowerCase().contains(searchWord)) {
                 results.add(recipe);
-            } else if (recipe.getServingUnits().toString().toLowerCase().contains(lower_val)) {
+            } else if (recipe.getServingUnits().toLowerCase().contains(searchWord)) {
                 results.add(recipe);
-            } else if (recipe.toString().toLowerCase().contains(lower_val)) {
+            } else if (recipe.toString().toLowerCase().contains(searchWord)) {
                 results.add(recipe);
             }
 

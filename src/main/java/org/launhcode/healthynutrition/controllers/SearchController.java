@@ -20,7 +20,7 @@ public class SearchController {
     @Autowired
     private RecipeRepository recipeRepository;
 
-    static HashMap<String, String> columnChoices = new HashMap<>();
+   public static HashMap<String, String> columnChoices = new HashMap<>();
 
     public SearchController() {
 
@@ -42,7 +42,7 @@ public class SearchController {
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
         Iterable<Recipe> recipes;
-        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+        if (searchTerm.equalsIgnoreCase("all") || searchTerm.equals("")){
             recipes = recipeRepository.findAll();
         } else {
             recipes = RecipeData.findByColumnAndValue(searchType, searchTerm, recipeRepository.findAll());
