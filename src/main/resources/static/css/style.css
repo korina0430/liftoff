@@ -1,6 +1,7 @@
 body {
     padding: 30px;
-    margin: 0;
+    margin: 10px 10px;
+    position: absolute;
 }
 
 h2 {
@@ -9,7 +10,7 @@ h2 {
         position: fixed;
         padding: 8px 0 8px;
         top: 100px;
-        left: 920px;
+        left: 620px;
         text-align: center;
         font-family: calibri;
         background-color: #88e6e9;
@@ -18,10 +19,10 @@ h2 {
 }
 
 h1 {
-    margin: auto;
-        width: 50%;
-        padding: 8px;
+        width: 110%;
+        position: relative;
         text-align: center;
+        right: -570px;
         font-family: calibri;
         background-color: #f0f8c6;
         border-radius: 25px;
@@ -34,53 +35,36 @@ div.field {
 label {
     font-size: 20px;
     position: absolute;
-    top: -18px;
+    top: -7px;
     left: 3px;
     font-family: calibri;
 }
 
 input {
-    width: 30%;
+    width: 94%;
     height: 30%;
     position: relative;
     top: 50%;
-    margin: 12px 0 20px;
+    margin: 22px 0px 20px 10px;
     border-style: solid;
     border-color: #000;
     font-family: calibri;
 }
 
 input[type=number] {
-    width: 3%;
-    left:815px;
+    width: 20%;
+    left:300px;
+    bottom: -90px;
     position: relative;
     border-radius:3px;
     border: 1px solid #000;
     text-align: center;
 }
-.bfInput {
-    top: -320px;
-    position: relative;
-}
-.lunchInput {
-    top: -315px;
-    position: relative;
-}
-.dinnerInput {
-    top: -315px;
-    position: relative;
-}
-.snackInput {
-    top: -310px;
-    position: relative;
-}
-.exerciseInput {
-    top: -310px;
-    position: relative;
-}
 
 input[type=submit] {
-    bottom: 300px;
+    bottom: 500px;
+    left: -240px;
+    width: 100%;
 }
 
 .breakfast {
@@ -112,35 +96,50 @@ input[type=submit] {
     color: #36d4da;
     position: relative;
     left: 800px;
-    top: -320px;
+    top: -550px;
     font-family: calibri;
 }
 
 .fieldset1 {
-    left: 400px;
-    bottom: -100px;
+    left: 300px;
+    bottom: 255px;
     position: relative;
-        width: 8%;
+        width: 20%;
+        height: 10%;
         text-align: center;
         border-style: solid;
         border-color: #000;
 }
 
 .fieldset2 {
-    left: 80px;
-    bottom: -150px;
+    left: 50px;
+    bottom: 200px;
     position: relative;
-        width: 8%;
+        width: 20%;
+        height: 10%;
         text-align: center;
         border-style: solid;
         border-color: #000;
 }
 
-.kcalFields {
+.totalText2 {
+    bottom: -200px;
+    left: 90px;
+    width: 300px;
+    position: relative;
+}
+
+.kcalValue {
     color: #35d4da;
     font-family calibri;
     font-size 18px;
-    bottom: -150px;
+    top: -250px;
+    left: -350px;
     position: relative;
-    left: 80px;
+}
+
+.myImg {
+    left: 700px;
+    top: -120px;
+    position: relative;
 }

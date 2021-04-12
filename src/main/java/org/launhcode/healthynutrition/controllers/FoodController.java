@@ -12,7 +12,7 @@ public class FoodController {
 
 // make an if-else statement that by the end of it subtracts food from the goal and then adds up the exercise and displays
 // the amount of calories leftover under K CAL
-// add option values in meal.html
+// add option values in calorietracking.html
 // option values that reference from a txt document that has all the food listed + total calories for each food listed.
 
 // K CALORIES - small boxes - that will display the total amount of calories from the .txt document.

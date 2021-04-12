@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie-Tracking Per Day</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/css/calendar.css" th:href="@{/css/calendar.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<h1>Calorie-Tracking Per Day</h1>
+<h2>April 2021</h2>
+</h2>
+
+<form method='post' action="calorietracking">
+
+    <div class="breakfast field">
+        <label>+ Breakfast</label>
+        <br>
+        <input type="text" name='breakfast'/>
+    </div>
+    <div class="lunch field">
+        <label>+ Lunch</label>
+        <br>
+        <input type="text" name='lunch'/>
+    </div>
+    <div class="dinner field">
+        <label>+ Dinner</label>
+        <br>
+        <input type="text"  name='dinner'/>
+    </div>
+    <div class="snacks field">
+        <label>+ Snacks</label>
+        <br>
+        <input type="text" name='snacks'/>
+    </div>
+    <div class="exercise field">
+        <label>+ Exercise</label>
+        <br>
+        <input type="text" name='exercise'/>
+    </div>
+
+    <div class="myImg">
+        <a href="calendar"><img src="https://i.imgur.com/QHpB0EU.png" width="300" height="300"></a>
+    </div>
+
+<fieldset>
+    <div class="fieldset2">
+        <legend>TOTAL</legend>
+    </div>
+</fieldset>
+    <fieldset>
+    <div class="fieldset1">
+        <legend>K CAL</legend>
+    </div>
+<script>
+$(function(){
+            $('#value1, #value2, #value3').keyup(function(){
+               let value1 = parseFloat($('#value1').val()) || 0;
+               let value2 = parseFloat($('#value2').val()) || 0;
+               let value3 = parseFloat($('#value3').val()) || 0;
+               $('#sum').val(value1 - value2 + value3);
+            });
+         });
+</script>
+        <div class="form-group">
+        <label class="kcalValue" for="value1">Goal</label>
+            <div class="col-sm-10">
+        <input type="number" name="value1" id="value1" class="form-control" min="0" placeholder="Enter first value" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="kcalValue" for="value2">- Food</label>
+            <div class="col-sm-10">
+                <input type="number" name="value2" id="value2" class="form-control" min="0" placeholder="Enter second value" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="kcalValue" for="value3">+ Exercise</label>
+            <div class="col-sm-10">
+                <input type="number" name="value3" id="value3" class="form-control" min="0" placeholder="Enter third value" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="kcalValue" for="sum">Total</label>
+            <div class="col-sm-10">
+                <input type="number" name="sum" id="sum" class="form-control" readonly />
+            </div>
+        </div>
+<!--        <div class="totalText2">-->
+<!--            <p>GOAL:  </p>-->
+<!--        </div>-->
+<!--        <div class="totalText2" style="margin-left: 350px;">-->
+<!--            <input type="text" name="total field 1" />-->
+<!--        </div>-->
+<!--        <div class="totalText2">-->
+<!--            <p>- FOOD:  </p>-->
+<!--        </div>-->
+<!--        <div class="totalText2" style="margin-left: 350px;">-->
+<!--            <input type="text" name="total field 2" />-->
+<!--        </div>-->
+<!--        <div class="totalText2">-->
+<!--            <p>+ EXERCISE:  </p>-->
+<!--        </div>-->
+<!--        <div class="totalText2" style="margin-left: 350px;">-->
+<!--            <input type="text" name="total field 3" />-->
+<!--        </div>-->
+<!--        <div class="totalText2">-->
+<!--            <p>TOTAL:</p>-->
+<!--        </div>-->
+    <div class="totalSubmit" style="margin-left: 437px;">
+        <input type="submit" value="Submit"/>
+    </div>
+    </fieldset>
+</form>
+</body>
+</html>
+
+
