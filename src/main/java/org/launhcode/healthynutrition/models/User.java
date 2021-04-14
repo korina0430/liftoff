@@ -10,9 +10,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class User extends AbstractEntity {
-//    @Id
-//    @GeneratedValue
-//    private Integer Id;
 
     @NotNull
     private String firstName;
@@ -52,10 +49,6 @@ public class User extends AbstractEntity {
         this.profile = profile;
     }
 
-    //    public Integer getId() {
-//        return Id;
-//    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -91,36 +84,6 @@ public class User extends AbstractEntity {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        if (!super.equals(o)) return false;
-//        User user = (User) o;
-//        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(pwHash, user.pwHash);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(super.hashCode(), firstName, lastName, email, pwHash);
-//    }
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof User)) return false;
-//        User user = (User) o;
-//        return Objects.equals(Id, user.Id) &&
-//                Objects.equals(getFirstName(), user.getFirstName()) &&
-//                Objects.equals(getLastName(), user.getLastName()) &&
-//                Objects.equals(getEmail(), user.getEmail()) &&
-//                Objects.equals(pwHash, user.pwHash);
-//    }
-
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
-//    }
 
 }
 

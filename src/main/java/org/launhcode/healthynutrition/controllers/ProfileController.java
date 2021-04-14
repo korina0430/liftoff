@@ -25,7 +25,6 @@ public class ProfileController {
     @Autowired
     private UserRepository userRepo;
 
-
     @GetMapping
     public String profileForm(Model model) {
         model.addAttribute("profile", new Profile());
@@ -34,7 +33,6 @@ public class ProfileController {
 
     @PostMapping
     public String createProfile(Model model, Profile profile) {
-        ;
         model.addAttribute("profile");
         repository.save(profile);
         return "redirect:";
@@ -43,17 +41,17 @@ public class ProfileController {
     @GetMapping("/{id}")
     public String displayEditProfileForm(Model model, @PathVariable("id") int id) {
 
-        Optional<Profile> optional = repository.findById(id);
+        Optional<Profile> profileId = repository.findById(id);
         Profile profile =  null;
-        if (optional.isEmpty()) {
+        if (profileId.isEmpty()) {
             profile = new Profile();
 
-            Optional<User> optionalUser = userRepo.findById(id);
-            if (optionalUser.isPresent()) {
-                profile.setUser(optionalUser.get());
+            Optional<User> userId = userRepo.findById(id);
+            if (userId.isPresent()) {
+                profile.setUser(userId.get());
             }
         } else {
-            profile = optional.get();
+            profile = profileId.get();
         }
 
         model.addAttribute("profile", profile);
