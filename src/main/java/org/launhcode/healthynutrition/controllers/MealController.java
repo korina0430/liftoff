@@ -23,7 +23,6 @@ public class MealController {
 
     @PostMapping
     public String displayAddMealForm(Model model, Food food) {
-        model.addAttribute("date", food.getDate());
         model.addAttribute("title", "Add Meals");
         foodRepository.save(food);
         return "redirect:";

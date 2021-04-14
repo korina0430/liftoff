@@ -17,7 +17,7 @@
 <h2>April 2021</h2>
 </h2>
 
-<form method='post' action="calorietracking">
+<form method='post'>
 
     <div class="breakfast field">
         <label>+ Breakfast</label>
@@ -27,7 +27,7 @@
     <div class="lunch field">
         <label>+ Lunch</label>
         <br>
-        <input type="text" name='lunch'/>
+        <input type="text" name='lunch'width="200"/>
     </div>
     <div class="dinner field">
         <label>+ Dinner</label>
@@ -58,12 +58,13 @@
     <div class="fieldset1">
         <legend>K CAL</legend>
     </div>
+    </fieldset>
 <script>
 $(function(){
             $('#value1, #value2, #value3').keyup(function(){
-               let value1 = parseFloat($('#value1').val()) || 0;
-               let value2 = parseFloat($('#value2').val()) || 0;
-               let value3 = parseFloat($('#value3').val()) || 0;
+               let value1 = parseInt(document.getElementById("myform").elements["value1"].value);
+               let value2 = parseInt(document.getElementById("myform").elements["value2"].value);
+               let value3 = parseInt(document.getElementById("myform").elements["value3"].value);
                $('#sum').val(value1 - value2 + value3);
             });
          });
@@ -71,48 +72,27 @@ $(function(){
         <div class="form-group">
         <label class="kcalValue" for="value1">Goal</label>
             <div class="col-sm-10">
-        <input type="number" name="value1" id="value1" class="form-control" min="0" placeholder="Enter first value" required />
+        <input type="text" name="calorieGoal" id="value1" class="form-control" min="0" placeholder="Enter first value" required />
             </div>
         </div>
         <div class="form-group">
             <label class="kcalValue" for="value2">- Food</label>
             <div class="col-sm-10">
-                <input type="number" name="value2" id="value2" class="form-control" min="0" placeholder="Enter second value" required />
+                <input type="text" name="calorieFood" id="value2" class="form-control" min="0" placeholder="Enter second value" required />
             </div>
         </div>
         <div class="form-group">
             <label class="kcalValue" for="value3">+ Exercise</label>
             <div class="col-sm-10">
-                <input type="number" name="value3" id="value3" class="form-control" min="0" placeholder="Enter third value" required />
+                <input type="text" name="calorieExercise" id="value3" class="form-control" min="0" placeholder="Enter third value" required />
             </div>
         </div>
         <div class="form-group">
             <label class="kcalValue" for="sum">Total</label>
             <div class="col-sm-10">
-                <input type="number" name="sum" id="sum" class="form-control" readonly />
+                <input type="text" name="total" id="sum" class="form-control" readonly />
             </div>
         </div>
-<!--        <div class="totalText2">-->
-<!--            <p>GOAL:  </p>-->
-<!--        </div>-->
-<!--        <div class="totalText2" style="margin-left: 350px;">-->
-<!--            <input type="text" name="total field 1" />-->
-<!--        </div>-->
-<!--        <div class="totalText2">-->
-<!--            <p>- FOOD:  </p>-->
-<!--        </div>-->
-<!--        <div class="totalText2" style="margin-left: 350px;">-->
-<!--            <input type="text" name="total field 2" />-->
-<!--        </div>-->
-<!--        <div class="totalText2">-->
-<!--            <p>+ EXERCISE:  </p>-->
-<!--        </div>-->
-<!--        <div class="totalText2" style="margin-left: 350px;">-->
-<!--            <input type="text" name="total field 3" />-->
-<!--        </div>-->
-<!--        <div class="totalText2">-->
-<!--            <p>TOTAL:</p>-->
-<!--        </div>-->
     <div class="totalSubmit" style="margin-left: 437px;">
         <input type="submit" value="Submit"/>
     </div>

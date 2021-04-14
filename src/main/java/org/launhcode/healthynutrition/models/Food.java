@@ -25,6 +25,10 @@ public class Food extends AbstractEntity {
     private Date date;
     private int id;
 
+//    @ManyToOne
+//    @JoinColumn(name="id")
+//    @Cascade(CascadeType.ALL)
+//    private User user;
 
     public Food() {
 
@@ -158,4 +162,6 @@ public class Food extends AbstractEntity {
             }
         return sum;
     }
+
+
 }

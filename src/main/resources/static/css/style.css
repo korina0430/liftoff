@@ -10,7 +10,7 @@ h2 {
         position: fixed;
         padding: 8px 0 8px;
         top: 100px;
-        left: 620px;
+        left: 710px;
         text-align: center;
         font-family: calibri;
         background-color: #88e6e9;
@@ -19,7 +19,7 @@ h2 {
 }
 
 h1 {
-        width: 110%;
+        width: 120%;
         position: relative;
         text-align: center;
         right: -570px;
@@ -135,6 +135,16 @@ input[type=submit] {
     font-size 18px;
     top: -250px;
     left: -350px;
+    position: relative;
+}
+
+.col-sm-10 {
+    top: -230px;
+    left: 300px;
+}
+
+.sum {
+    bottom: -900px;
     position: relative;
 }
 
