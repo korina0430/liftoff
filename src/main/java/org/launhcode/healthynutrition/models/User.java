@@ -23,6 +23,16 @@ public class User {
     @NotNull
     private String pwHash;
 
+    private String resetPasswordToken;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User(){}
@@ -83,5 +93,7 @@ public class User {
         return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
     }
 
+    public void setPassword(String encodedPassword) {
+    }
 }
 

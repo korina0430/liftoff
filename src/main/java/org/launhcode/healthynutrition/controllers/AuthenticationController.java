@@ -39,7 +39,8 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
 
-        session.setAttribute(USER_SESSION_KEY, user.getEmail());
+//        session.setAttribute(USER_SESSION_KEY, user.getEmail());
+        session.setAttribute(USER_SESSION_KEY, user.getId());
     }
 
     @GetMapping("/register")
@@ -128,4 +129,5 @@ public class AuthenticationController {
         request.getSession().invalidate();
         return "redirect:/login";
     }
+
 }
