@@ -93,6 +93,7 @@ public class User {
         return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
     }
 
+
     public void setPassword(String encodedPassword) {
     }
 }
