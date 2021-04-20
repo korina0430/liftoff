@@ -13,7 +13,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +45,7 @@ public class ForgotPasswordController {
         String token = RandomString.make(30);
 
         try {
-            customerService.updateResetPasswordToken(token, email);
+            updateResetPasswordToken(token, email);
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
             sendEmail(email, resetPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
@@ -89,7 +88,7 @@ public class ForgotPasswordController {
 
     @GetMapping("/reset_password")
     public String showResetPasswordForm(@Param(value = "token") String token, @org.jetbrains.annotations.NotNull Model model) {
-        User user = customerService.getByResetPasswordToken(token);
+        User user = getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
         if (user == null) {
@@ -105,28 +104,30 @@ public class ForgotPasswordController {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
 
-        User user = customerService.getByResetPasswordToken(token);
+        User user = getByResetPasswordToken(token);
         model.addAttribute("title", "Reset your password");
 
         if (user == null) {
             model.addAttribute("message", "Invalid Token");
             return "message";
         } else {
-            customerService.updatePassword(user, password);
+            updatePassword(user, password);
 
             model.addAttribute("message", "You have successfully changed your password.");
+//            return "message";
         }
 
         return "redirect:";
     }
 
-    public void updateResetPasswordToken(String token, String email, Errors errors)  {
+    public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
         User user = userRepo.findByEmail(email);
         if (user != null) {
             user.setResetPasswordToken(token);
             userRepo.save(user);
         } else {
-            errors.rejectValue(email, "Could not find any customer with the email ");
+            throw new UserNotFoundException("Could not find any user with the email " + email);
+
         }
     }
 
