@@ -1,4 +1,0 @@
-org/launhcode/healthynutrition/HealthyNutritionApplication.java
- org.launhcode.healthynutrition.HealthyNutritionApplication
-org/launhcode/healthynutrition/controllers/HomeController.java
- org.launhcode.healthynutrition.controllers.HomeController

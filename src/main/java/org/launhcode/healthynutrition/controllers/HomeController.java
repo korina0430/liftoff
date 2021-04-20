@@ -16,6 +16,7 @@ import java.util.Optional;
 @RequestMapping("/")
 public class HomeController {
 
+
     @Autowired
     private RecipeRepository recipeRepository;
 
