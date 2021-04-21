@@ -3,9 +3,7 @@ package org.launhcode.healthynutrition.controllers;
 import net.bytebuddy.utility.RandomString;
 import org.launhcode.healthynutrition.data.UserRepository;
 import org.launhcode.healthynutrition.models.User;
-import org.launhcode.healthynutrition.models.service.CustomerService;
-import org.launhcode.healthynutrition.models.service.UserNotFoundException;
-import org.launhcode.healthynutrition.models.service.Utility;
+import org.launhcode.healthynutrition.models.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,34 +20,35 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
+//import static org.launhcode.healthynutrition.models.service.Utility.getSiteURL;
+
 @Controller
 public class ForgotPasswordController {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    private CustomerService customerService;
+//    @Autowired
+//    private CustomerService customerService;
 
     @Autowired
     private UserRepository userRepo;
 
     @ModelAttribute
-    @GetMapping("/forgot_password")
+    @GetMapping("/forgot-password")
     public String showForgotPasswordForm() {
         return "forgot_password";
     }
 
-    @PostMapping("/forgot_password")
+    @PostMapping("/forgot-password")
     public String processForgotPassword(Model model, HttpServletRequest request) {
         String email = request.getParameter("email");
         String token = RandomString.make(30);
 
         try {
             updateResetPasswordToken(token, email);
-            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+            String resetPasswordLink = getSiteURL(request) + "/reset-password?token=" + token;
             sendEmail(email, resetPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
-
 
         } catch (UserNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
@@ -57,7 +56,12 @@ public class ForgotPasswordController {
             model.addAttribute("error", "Error while sending email");
         }
 
-        return "forgot_password";
+        return "forgot-password";
+    }
+
+    private String getSiteURL(HttpServletRequest request) {
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(), "");
     }
 
     public void sendEmail(String recipientEmail, String link)
@@ -86,7 +90,7 @@ public class ForgotPasswordController {
     }
 
 
-    @GetMapping("/reset_password")
+    @GetMapping("/reset-password")
     public String showResetPasswordForm(@Param(value = "token") String token, @org.jetbrains.annotations.NotNull Model model) {
         User user = getByResetPasswordToken(token);
         model.addAttribute("token", token);
@@ -96,10 +100,10 @@ public class ForgotPasswordController {
             return "message";
         }
 
-        return "reset_password";
+        return "reset-password";
     }
 
-    @PostMapping("/reset_password")
+    @PostMapping("/reset-password")
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");

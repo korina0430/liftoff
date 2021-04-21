@@ -1,4 +1,4 @@
-package org.launhcode.healthynutrition.models.service;
+package org.launhcode.healthynutrition.models;
 
 public class UserNotFoundException extends Exception{
     public UserNotFoundException(String message) {
