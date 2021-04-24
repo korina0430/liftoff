@@ -25,7 +25,17 @@ public class User {
     @NotNull
     private String pwHash;
 
-    @OneToMany(mappedBy = "user")
+    private String resetPasswordToken;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+  @OneToMany(mappedBy = "user")
     private List<Recipe> recipes;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -92,5 +102,8 @@ public class User {
         return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
     }
 
+
+    public void setPassword(String encodedPassword) {
+    }
 }
 
