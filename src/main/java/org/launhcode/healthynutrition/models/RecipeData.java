@@ -8,6 +8,8 @@ public class RecipeData {
 
         ArrayList<Recipe> results = new ArrayList<>();
 
+
+
         if (value.equalsIgnoreCase("all")){
             return (ArrayList<Recipe>) allRecipes;
         }
@@ -21,15 +23,16 @@ public class RecipeData {
             String searchString = getFieldValue(recipe, column);
 
             if (searchString != null && searchString.toLowerCase().contains(value.toLowerCase())) {
+              
                 results.add(recipe);
             }
         }
-
 
         return results;
     }
 
     public static String getFieldValue(Recipe recipe, String fieldName){
+
         String searchValue;
         switch (fieldName.toLowerCase()) {
             case "name":
@@ -42,7 +45,6 @@ public class RecipeData {
                 searchValue = recipe.getServingUnits();
         }
         return searchValue;
-
     }
 
     /**
@@ -53,8 +55,8 @@ public class RecipeData {
      * @return      List of all recipes with at least one field containing the value.
      */
     public static ArrayList<Recipe> findByValue(String value, Iterable<Recipe> allRecipes) {
-        String searchWord = value.toLowerCase();
 
+        String searchWord = value.toLowerCase();
         ArrayList<Recipe> results = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
@@ -66,6 +68,7 @@ public class RecipeData {
             } else if (recipe.getServingUnits().toLowerCase().contains(searchWord)) {
                 results.add(recipe);
             } else if (recipe.toString().toLowerCase().contains(searchWord)) {
+              
                 results.add(recipe);
             }
 
