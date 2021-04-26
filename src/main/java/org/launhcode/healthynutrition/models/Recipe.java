@@ -1,11 +1,9 @@
 package org.launhcode.healthynutrition.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -34,19 +32,24 @@ public class Recipe {
     @Size(min = 5, max = 100, message = "Serving units must be in 5 to 100 characters")
     private String servingUnits;
 
+    @ManyToOne
+    private  User user;
+
+
     @ManyToMany
     private List<RecipeCategory> categories;
 
     public Recipe() {}
 
     public Recipe(String name, String description, int calories, String directions,
-                  String servingUnits, List<RecipeCategory> categories) {
+                  String servingUnits, List<RecipeCategory> categories, User user) {
         this.name = name;
         this.description = description;
         this.calories = calories;
         this.directions = directions;
         this.servingUnits = servingUnits;
         this.categories = categories;
+        this.user = user;
     }
 
     public int getId() {
@@ -100,5 +103,13 @@ public class Recipe {
 
     public void setCategories(List<RecipeCategory> categories) {
         this.categories = categories;
+    }
+
+    public User getRecipeUser() {
+        return user;
+    }
+
+    public void setRecipeUser(User recipeUser) {
+        this.user = recipeUser;
     }
 }

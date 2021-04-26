@@ -3,8 +3,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +24,19 @@ public class User {
     private String email;
     @NotNull
     private String pwHash;
+
+    private String resetPasswordToken;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+  @OneToMany(mappedBy = "user")
+    private List<Recipe> recipes;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -66,6 +81,10 @@ public class User {
         return encoder.matches(password, pwHash);
     }
 
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,5 +102,8 @@ public class User {
         return Objects.hash(Id, getFirstName(), getLastName(), getEmail(), pwHash);
     }
 
+
+    public void setPassword(String encodedPassword) {
+    }
 }
 

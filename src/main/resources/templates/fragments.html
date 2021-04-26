@@ -11,14 +11,6 @@
 
 </head>
 
-<header th:fragment="header">
-    <h1 th:text="${title}">Health & Nutrition</h1>
-    <ul class="nav" style="float:right;">
-        <li class="nav-item"><a class="nav-link" ></a></li>
-    </ul>
-
-</header>
-
     <title th:text="'Healthy Nutrition' + ${title == null ? '' : ' :: ' + title}">Healthy Nutrition</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -33,7 +25,7 @@
             <a href="/">Home</a>
             <a href="/recipe/create">Create Post</a>
             <a href="/recipe/posts">All Recipes</a>
-            <a href="/register">Login/Sign Up</a>
+            <a href="/register">Login/SignUp</a>
             <a href="/calorietracking">Calorie Tracking</a>
             <a href="/profile">My Profile</a>
             <a href="/search">Search</a>
