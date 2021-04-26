@@ -14,7 +14,15 @@
 
 <body>
 <h1>Calorie-Tracking Per Day</h1>
-<h2>April 2021</h2>
+<h2><script>
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+document.write(today);
+</script></h2>
 </h2>
 
 <form method='post'>
@@ -62,10 +70,10 @@
 <script>
 $(function(){
             $('#value1, #value2, #value3').keyup(function(){
-               let value1 = parseInt(document.getElementById("myform").elements["value1"].value);
-               let value2 = parseInt(document.getElementById("myform").elements["value2"].value);
-               let value3 = parseInt(document.getElementById("myform").elements["value3"].value);
-               $('#sum').val(value1 - value2 + value3);
+               let value1 = parseInt(document.getElementById("myform").elements["calorieGoal"].value);
+               let value2 = parseInt(document.getElementById("myform").elements["calorieFood"].value);
+               let value3 = parseInt(document.getElementById("myform").elements["calorieExercise"].value);
+               $('#sum').val(calorieGoal - calorieFood + calorieExercise);
             });
          });
 </script>

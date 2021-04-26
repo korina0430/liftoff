@@ -3,6 +3,7 @@ package org.launhcode.healthynutrition.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.*;
 
 
@@ -132,36 +133,43 @@ public class Food extends AbstractEntity {
         this.id = id;
     }
 
-    public Integer setTotal() {
-        ArrayList<Integer> food = new ArrayList<Integer>();
-        food.add(this.breakfast);
-        food.add(this.lunch);
-        food.add(this.dinner);
-        food.add(this.snacks);
-        food.add(this.exercise);
-
-        int total = 0;
-
-        for (int i = 0; i < food.size(); i++) {
-                total += food.get(i);
-            }
-        return total;
+    private int getValueInRange(int value, int min, int max) {
+        return Math.min(Math.max(min, value), max);
     }
 
-        public Integer setMealCalculations() {
-        ArrayList<Integer> calorieTotal = new ArrayList<Integer>();
-        calorieTotal.add(this.calorieFood);
-        calorieTotal.add(this.calorieExercise);
-        calorieTotal.add(this.calorieGoal);
-
-        int sum = 0;
-
-        for (int i = 0; i < calorieTotal.size(); i++) {
-                sum += calorieTotal.get(i);
-
-            }
-        return sum;
+    private float getValueInRange(float value, float min, float max) {
+        return Math.min(Math.max(min, value), max);
     }
 
+    private HashMap<String, Float> calculateTotalCalories(double breakfast, double lunch, double dinner,
+                                                          double snacks, float exercise) {
+        float kcalBreakfast = (float) (breakfast * 7);
+        float kcalLunch = (float) (lunch * 7);
+        float kcalDinner = (float) (dinner * 7);
+        float kcalSnacks = (float) (snacks * 2);
+        float kcalTotal = kcalBreakfast + kcalDinner +kcalLunch + kcalSnacks - exercise;
+        HashMap<String, Float> result = new HashMap<>();
 
+
+        if (kcalTotal <= 0) {
+            return result;
+        }
+
+        result.put("energy", roundMacroEnergy(kcalTotal));
+        result.put("breakfast", roundMacroCal((float) kcalBreakfast));
+        result.put("dinner", roundMacroCal((float) kcalDinner));
+        result.put("lunch", roundMacroCal(kcalLunch));
+        result.put("snacks", roundMacroEnergy(kcalSnacks));
+        return result;
+    }
+
+    private float roundMacroCal(float floatValue) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        return (Float.valueOf(decimalFormat.format(floatValue)));
+    }
+
+    private float roundMacroEnergy(float floatValue) {
+        DecimalFormat decimalFormat = new DecimalFormat("#");
+        return (Float.valueOf(decimalFormat.format(floatValue)));
+    }
 }

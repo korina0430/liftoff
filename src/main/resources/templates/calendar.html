@@ -21,7 +21,15 @@ $(document).ready(function(){
 <body>
 <div class="container-fluid">
     <header>
-        <h4 class="display-4 mb-4 text-center">April 2021</h4>
+        <h4 class="display-4 mb-4 text-center"><script>
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+document.write(today);
+</script></h4>
         <div class="row d-none d-sm-flex p-1 bg-dark text-white">
             <h5 class="col-sm p-1 text-center">Sunday</h5>
             <h5 class="col-sm p-1 text-center">Monday</h5>
