@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Health_nutrition" type="Application" factoryName="Application">
+    <envs>
+      <env name="DBuser" value="health_nutrition" />
+      <env name="DBpassword" value="Coder_Girl" />
+    </envs>
+    <module name="liftoff" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

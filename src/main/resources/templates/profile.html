@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+<h4>My Profile</h4>
+
+ <head>
+    <meta charset="UTF-8">
+ </head>
+<body>
+ <form method = "post">
+     <div class = "form-group">
+        <label>First Name
+        <input class ="form-control" type="text" th:field="${user.firstName}"/>
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Last Name
+        <input class ="form-control" type="text" th:field="${user.lastName}"/>
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Email
+        <input class ="form-control" type="text" th:field="${user.email}"/>
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Gender
+        <input class ="form-control" type="text" th:field="${user.gender}"/>
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Age
+        <input class ="form-control" type="text" th:field="${user.age}"/>
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Contact Number
+        <input class ="form-control" type="text" th:field="${user.contactNumber}"/>
+        </label>
+    </div>
+
+
+    <input type="submit" class = "btn btn-primary" value="Save" onclick="document.location.href='/'"/>
+    <input type="button" class = "btn btn-primary" value="Cancel" onclick="document.location.href='/'"/>
+    </form>
+    
+    <form method = "post" action="/profile/delete">
+    <input type="submit" value= "Delete Profile" class = "btn btn-danger"/>
+
+	</form>
+
+</body>
+  </html>

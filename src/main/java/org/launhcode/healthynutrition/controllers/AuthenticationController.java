@@ -20,7 +20,7 @@ public class AuthenticationController {
     @Autowired
     UserRepository userRepo;
 
-    private static final String USER_SESSION_KEY = "user";
+    public static final String USER_SESSION_KEY = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(USER_SESSION_KEY);
@@ -89,6 +89,7 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
+    	
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
@@ -107,7 +108,7 @@ public class AuthenticationController {
         User theUser = userRepo.findByEmail(loginFormDTO.getEmail());
 
         if (theUser == null) {
-            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            errors.rejectValue("email", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
             return "login";
         }
