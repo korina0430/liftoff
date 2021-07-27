@@ -25,9 +25,45 @@ public class User {
     @NotNull
     private String pwHash;
 
-    private String resetPasswordToken;
+    public String getPwHash() {
+		return pwHash;
+	}
 
-    public String getResetPasswordToken() {
+	public void setPwHash(String pwHash) {
+		this.pwHash = pwHash;
+	}
+
+	private String resetPasswordToken;
+    
+    private int age;
+    private String gender;
+    private String contactNumber;
+
+    public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getResetPasswordToken() {
         return resetPasswordToken;
     }
 
